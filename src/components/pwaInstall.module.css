@@ -1,0 +1,42 @@
+/* PWA 安装引导弹框（复用全局 .sheet 抽屉容器） */
+
+.icon {
+  font-size: 56px;
+  text-align: center;
+  margin-top: 4px;
+  line-height: 1;
+  filter: drop-shadow(0 4px 0 rgba(59, 46, 34, 0.12));
+}
+
+.desc {
+  margin: 10px 6px 0;
+  font-size: 13.5px;
+  line-height: 1.6;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.steps {
+  margin: 16px 0 0;
+  padding: 14px 16px;
+  background: var(--paper-deep);
+  border: var(--border);
+  border-radius: var(--r-card);
+  display: grid;
+  gap: 10px;
+}
+
+.steps p {
+  margin: 0;
+  font-size: 13.5px;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+.note {
+  margin: 0;
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-align: center;
+  line-height: 1.5;
+}

@@ -1,0 +1,20 @@
+{
+  "_doc": "内容覆盖层。Excel 的 map_name / map_icon / display_order 目前全空，此文件提供降级值。Excel 一旦填写，导入时优先采用 Excel 值（并计入 warnings）。修改本文件 + 重跑 npm run import:content 即可调整地图学科，无需改代码。",
+  "_rules": [
+    "on_map=true 的学科渲染为地图区域，建议 2-4 个",
+    "on_map=false 的学科收进「兴趣拓展」次级入口",
+    "color 禁止与五态状态色混用（gray #C9BFA9 / yellow #E8B84B / green #4C8C6B / orange #E08A3C / red #D8583F）"
+  ],
+  "subjects": {
+    "subj_小学语文": { "map_name": "汉字森林", "map_icon": "🌲", "color": "#4C8C6B", "on_map": true, "display_order": 1 },
+    "subj_小学数学": { "map_name": "数字王国", "map_icon": "🏰", "color": "#6C5CA6", "on_map": true, "display_order": 2 },
+    "subj_小学英语": { "map_name": "英语小镇", "map_icon": "🏘️", "color": "#4FA8C9", "on_map": true, "display_order": 3 },
+    "subj_小学科学": { "map_name": "科学营地", "map_icon": "🔬", "color": "#6E8B8C", "on_map": false, "display_order": 4 },
+    "subj_小学美术": { "map_name": "美术花园", "map_icon": "🎨", "color": "#B5736B", "on_map": false, "display_order": 5 },
+    "subj_小学音乐": { "map_name": "音乐山谷", "map_icon": "🎵", "color": "#8B7BA8", "on_map": false, "display_order": 6 },
+    "subj_小学书法": { "map_name": "书法庭院", "map_icon": "✍️", "color": "#8C6E52", "on_map": false, "display_order": 7 },
+    "subj_小学信息科技": { "map_name": "信息驿站", "map_icon": "💻", "color": "#5F7C8A", "on_map": false, "display_order": 8 },
+    "subj_小学劳动科技": { "map_name": "劳动工坊", "map_icon": "🔧", "color": "#7E8C5A", "on_map": false, "display_order": 9 },
+    "subj_小学心理健康": { "map_name": "心灵小屋", "map_icon": "💗", "color": "#A87E9B", "on_map": false, "display_order": 10 }
+  }
+}

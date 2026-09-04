@@ -1,0 +1,35 @@
+# 依赖（137M，禁止上传；Netlify 会自动 npm install）
+node_modules/
+
+# 构建产物（Netlify 会自动 build，无需上传）
+dist/
+
+# Netlify 本地函数缓存
+.netlify/
+
+# 日志
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# TypeScript / Vite 临时产物
+*.tsbuildinfo
+vite.config.ts.timestamp-*.mjs
+
+# 本地工作记忆（含笔记，不入库）
+.workbuddy/
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 编辑器 / OS
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# 系统缓存
+Thumbs.db

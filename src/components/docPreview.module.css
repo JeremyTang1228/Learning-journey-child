@@ -1,0 +1,223 @@
+/* 文档(App 内)预览浮层 —— 风格与 video.module.css 一致 */
+
+.frameMask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  animation: dp-fade 0.15s ease;
+}
+.frameWrap {
+  width: min(960px, 100%);
+  height: min(92vh, 920px);
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+.frameBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+}
+.frameTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+}
+.barActions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.dlBtn {
+  font-size: 12px;
+  color: #4da3ff;
+  text-decoration: none;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 5px 10px;
+}
+.frameClose {
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--text-mute);
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+.frameClose:hover {
+  background: var(--surface-2);
+}
+
+.viewerWrap {
+  flex: 1;
+  position: relative;
+  background: #525659;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.center {
+  position: absolute;
+  inset: 0;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 48px 20px;
+  text-align: center;
+}
+.hint {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.5;
+}
+.errTitle {
+  font-size: 14px;
+  margin: 0;
+}
+.extLink {
+  color: #4da3ff;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.scroll {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.page {
+  position: relative;
+  width: 100%;
+  max-width: 840px;
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
+  /* --page-ratio 由 JS 设置为纯数字（如 1.7778），aspect-ratio 原生维持宽高比 */
+  aspect-ratio: var(--page-ratio, 16 / 9);
+}
+.pageImg {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: opacity 0.2s ease;
+}
+.pageSkeleton {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #666;
+  font-size: 13px;
+  background: #f7f7f7;
+  pointer-events: none;
+}
+.pageErr {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: #666;
+  font-size: 13px;
+  text-align: center;
+  background: #f7f7f7;
+}
+.retryBtn {
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  border-radius: 8px;
+  padding: 6px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.pageNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 10px;
+  background: #333;
+  color: #fff;
+  flex-shrink: 0;
+}
+.navBtn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 8px;
+  background: #4a4a4a;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+.navBtn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+.pageNo {
+  font-size: 13px;
+  min-width: 56px;
+  text-align: center;
+}
+.canPreview {
+  color: #2e9e5b;
+  font-weight: 600;
+}
+.spinner {
+  width: 28px;
+  height: 28px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: dp-spin 0.8s linear infinite;
+}
+@keyframes dp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@keyframes dp-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

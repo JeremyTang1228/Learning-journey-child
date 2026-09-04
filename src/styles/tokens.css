@@ -1,0 +1,91 @@
+/* ============================================================================
+   Design Tokens
+   来源：03_UI_Prototype/DesignSystem.html（UI/UX 最高参考标准）
+   变量值与原型 1:1 对应，禁止在此文件内新增设计决策。
+   学科色由 content 数据（subjects.json）下发，不在此硬编码。
+   ========================================================================== */
+
+:root {
+  /* ---- 纸质暖调基底 ---- */
+  --paper: #f1e4c4; /* 全局背景 · 地图纸张 */
+  --paper-deep: #e7d5a8; /* 卡片底色 · 面板 */
+  --ink: #3b2e22; /* 主文字 · 描边 */
+  --ink-soft: #7a6a55; /* 次要文字 */
+  --road: #b98756; /* 路径 · 虚线小路 */
+
+  /* ---- 五态知识状态色（语义严格一一对应，禁止挪用） ---- */
+  --gray: #c9bfa9; /* ⚪ 未复核 */
+  --yellow: #e8b84b; /* 🟡 基本掌握 */
+  --green: #4c8c6b; /* 🟢 已掌握 */
+  --orange: #e08a3c; /* 🟠 需要加强 */
+  --red: #d8583f; /* 🔴 重点关注 */
+
+  /* ---- 学科区域色（Design System 原值，仅作 fallback） ---- */
+  --forest: #4c8c6b;
+  --kingdom: #6c5ca6;
+  --town: #4fa8c9;
+
+  /* ---- 阴影：实心硬阴影，无模糊（贴纸/桌游卡牌手感） ---- */
+  --shadow: 0 6px 0 rgba(59, 46, 34, 0.12);
+  --shadow-sm: 0 3px 0 rgba(59, 46, 34, 0.12);
+  --shadow-lg: 0 8px 0 rgba(59, 46, 34, 0.16);
+
+  /* ---- 4px 基准网格 ---- */
+  --sp-xs: 4px; /* 图标与文字间距 */
+  --sp-sm: 8px; /* 组件内边距 / chip 间距 */
+  --sp-md: 12px; /* 卡片内边距（紧凑） */
+  --sp-lg: 16px; /* 页面左右边距 / 卡片间距 */
+  --sp-xl: 20px; /* 卡片内边距（宽松，Hero 卡） */
+  --sp-2xl: 32px; /* 章节之间 */
+
+  /* ---- 圆角：越重要越大，无直角 ---- */
+  --r-chip: 10px; /* 小标签 */
+  --r-btn: 14px; /* 按钮 · 小卡片 */
+  --r-card: 18px; /* 标准卡片 */
+  --r-hero: 22px; /* Hero 卡 · 地图画布 */
+  --r-pill: 50%; /* 头像 · 圆形按钮 · 节点 */
+
+  /* ---- 字体 ---- */
+  --font-title: 'ZCOOL KuaiLe', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+  --font-hand: 'Zhi Mang Xing', 'Kaiti SC', 'STKaiti', cursive;
+  --font-body: 'Noto Sans SC', -apple-system, BlinkMacSystemFont, 'PingFang SC', 'Hiragino Sans GB',
+    'Microsoft YaHei', sans-serif;
+
+  /* ---- 描边 ---- */
+  --border-w: 2px;
+  --border: var(--border-w) solid var(--ink);
+  --border-soft: var(--border-w) solid rgba(59, 46, 34, 0.15);
+
+  /* ---- 主按钮暖橙色（代表"往前走"） ---- */
+  --cta: #e08a3c;
+  --cta-deep: #c9742a;
+
+  /* ---- 布局 ---- */
+  --nav-h: 64px;
+  --safe-b: env(safe-area-inset-bottom, 0px);
+  --max-w: 480px;
+
+  /* ---- 动效 ---- */
+  --ease: cubic-bezier(0.34, 1.36, 0.64, 1);
+  --dur: 220ms;
+}
+
+/* ============================================================================
+   响应式断点（平板 / 桌面适配，不破坏手机端）
+   手机端维持默认 --max-w:480px。平板端起内容直接铺满屏幕，不再限制窄条；
+   各页面内部网格已改用 auto-fit，容器变宽后自动排布更多列。
+   ========================================================================== */
+@media (min-width: 600px) {
+  :root {
+    --max-w: 100%; /* 平板竖屏：完全铺满屏幕 */
+    --sp-lg: 24px;
+    --sp-xl: 30px;
+  }
+}
+@media (min-width: 900px) {
+  :root {
+    --max-w: 100%; /* 平板横屏 / 桌面：完全铺满屏幕 */
+    --sp-lg: 28px;
+    --sp-xl: 36px;
+  }
+}

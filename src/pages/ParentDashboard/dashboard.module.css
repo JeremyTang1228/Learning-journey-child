@@ -1,0 +1,208 @@
+.hero {
+  background: #fffaf0;
+  border: 2px solid rgba(59, 46, 34, 0.25);
+  border-radius: 22px;
+  padding: 22px 18px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+.heroQ {
+  font-family: var(--font-title);
+  font-size: 16px;
+  color: var(--ink-soft);
+  margin-bottom: 4px;
+}
+.ringWrap {
+  position: relative;
+  width: 150px;
+  height: 150px;
+}
+.ringNum {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.ringPct {
+  font-size: 33px;
+  font-weight: 900;
+  line-height: 1;
+}
+.ringLbl {
+  font-size: 11px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.compare {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 12px;
+  border-radius: 14px;
+  margin-top: 6px;
+}
+.up { background: rgba(76, 140, 107, 0.15); color: var(--green); }
+.down { background: rgba(216, 88, 63, 0.15); color: var(--red); }
+.flat { background: rgba(122, 106, 85, 0.12); color: var(--ink-soft); }
+.heroMeta {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-top: 4px;
+}
+.unrev {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.unrev b { color: var(--ink); }
+
+.attnCard {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fffaf0;
+  border: 2px solid rgba(59, 46, 34, 0.18);
+  border-radius: 14px;
+  padding: 11px 12px;
+  margin-bottom: 8px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.attnCard:active { transform: translateY(2px); }
+.attnMeta { flex: 1; min-width: 0; }
+.attnName { font-weight: 700; font-size: 13.5px; }
+.attnSub { font-size: 11px; color: var(--ink-soft); }
+.attnChev { color: var(--ink-soft); font-size: 13px; }
+.emptyGood {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(76, 140, 107, 0.1);
+  border: 2px dashed var(--green);
+  border-radius: 14px;
+  padding: 14px;
+  font-size: 13px;
+}
+
+.sectionTitle {
+  font-family: var(--font-title);
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.learnCard,
+.examCard {
+  background: #fffaf0;
+  border: 2px solid rgba(59, 46, 34, 0.18);
+  border-radius: 14px;
+  padding: 12px 14px;
+}
+/* 本周学了什么：分学科卡片 + 可展开的"查看更多" */
+.learnSubjectCard {
+  background: #fffaf0;
+  border: 2px solid rgba(59, 46, 34, 0.18);
+  border-radius: 14px;
+  padding: 10px 12px;
+}
+.learnSubjectHead {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  padding: 2px 0;
+  cursor: pointer;
+}
+.learnSubjectHead:active { transform: translateY(2px); }
+.learnUnits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.learnUnit {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  background: rgba(59, 46, 34, 0.07);
+  border-radius: 10px;
+  padding: 3px 9px;
+}
+/* 展开的知识点列表（与复盘完成页同款） */
+.listItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fffaf0;
+  border: 2px solid rgba(59, 46, 34, 0.18);
+  border-radius: 14px;
+  padding: 10px 12px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+}
+.listItem:active { transform: translateY(2px); }
+.listTitle { font-weight: 700; font-size: 13.5px; }
+.listMeta { font-size: 11px; color: var(--ink-soft); }
+.listChev { color: var(--ink-soft); font-size: 13px; flex: none; }
+.learnedUnitTitle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: 700;
+  font-size: 13.5px;
+  margin-top: 4px;
+}
+.ringMuted {
+  font-size: 14px;
+  color: var(--ink-soft);
+  background: rgba(59, 46, 34, 0.06);
+  border-radius: 16px;
+  padding: 40px 16px;
+  width: 150px;
+}
+.examRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.examScore { font-weight: 800; font-size: 15px; }
+.clickable { cursor: pointer; }
+
+/* 考试录入表单 */
+.formRow { display: flex; flex-direction: column; gap: 6px; margin-bottom: 12px; }
+.formRow label { font-size: 12.5px; color: var(--ink-soft); }
+.input, .select {
+  border: 2px solid rgba(59, 46, 34, 0.25);
+  border-radius: 12px;
+  padding: 10px 12px;
+  font-size: 14px;
+  font-family: inherit;
+  background: #fffaf0;
+  color: var(--ink);
+}
+.scoreRow { display: flex; gap: 10px; }
+.scoreRow .input { flex: 1; }
+.pillRow { display: flex; gap: 8px; flex-wrap: wrap; }
+.pill {
+  border: 2px solid rgba(59, 46, 34, 0.2);
+  background: #fffaf0;
+  border-radius: 14px;
+  padding: 8px 14px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.pill.on { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.detailRow { display: flex; gap: 8px; align-items: center; padding: 4px 0; font-size: 13px; }

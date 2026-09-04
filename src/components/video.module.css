@@ -1,0 +1,256 @@
+.card,
+a.card {
+  display: flex;
+  gap: var(--sp-md);
+  align-items: center;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  color: inherit;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+.card:active {
+  transform: translateY(0);
+}
+
+.thumb {
+  position: relative;
+  flex: 0 0 96px;
+  width: 96px;
+  height: 64px;
+  border-radius: var(--radius-sm);
+  background: #dfe6ef center/cover no-repeat;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.thumbIcon {
+  font-size: 22px;
+  opacity: 0.5;
+}
+.play {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 2px;
+}
+.dur {
+  position: absolute;
+  right: 4px;
+  bottom: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 11px;
+  padding: 1px 5px;
+  border-radius: 8px;
+}
+.ext {
+  position: absolute;
+  left: 4px;
+  bottom: 4px;
+  background: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 10px;
+  padding: 1px 5px;
+  border-radius: 8px;
+}
+.card.disabled {
+  cursor: default;
+  opacity: 0.85;
+}
+a.card:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+a.card:active {
+  transform: translateY(0);
+}
+
+.info {
+  flex: 1;
+  min-width: 0;
+}
+.title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.metaRow {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-top: 4px;
+}
+.tag {
+  font-size: 11px;
+  color: var(--text-mute);
+  background: var(--surface-2);
+  border-radius: 8px;
+  padding: 1px 6px;
+}
+.canPlay {
+  font-size: 11px;
+  color: #fff;
+  background: var(--cta);
+  border-radius: 8px;
+  padding: 1px 6px;
+}
+.need {
+  font-size: 11px;
+  color: var(--warn, #b8860b);
+  background: rgba(184, 134, 11, 0.12);
+  border-radius: 8px;
+  padding: 1px 6px;
+}
+
+/* App 内播放浮层 */
+.frameMask {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.62);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 16px;
+  animation: fade-in 0.15s ease;
+}
+.frameWrap {
+  width: min(860px, 100%);
+  max-height: 92vh;
+  background: var(--surface);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+.frameBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--border);
+}
+.frameTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.frameClose {
+  flex: 0 0 auto;
+  border: none;
+  background: transparent;
+  font-size: 16px;
+  line-height: 1;
+  color: var(--text-mute);
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.frameClose:hover {
+  background: var(--surface-2);
+}
+.playerArea {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #000;
+  overflow: hidden;
+}
+.frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  display: block;
+  background: #000;
+}
+.loading {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 14px;
+  background: #000;
+}
+.error {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+  text-align: center;
+  color: #fff;
+  background: #161616;
+}
+.errTitle {
+  font-size: 14px;
+  margin: 0;
+}
+.errHint {
+  font-size: 12px;
+  opacity: 0.7;
+  margin: 0;
+  line-height: 1.5;
+}
+.extLink {
+  color: #4da3ff;
+  font-size: 13px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.extLinkFloating {
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  z-index: 2;
+  color: #fff;
+  font-size: 12px;
+  text-decoration: none;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 6px 12px;
+  border-radius: 16px;
+  backdrop-filter: blur(2px);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

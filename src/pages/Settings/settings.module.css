@@ -1,0 +1,86 @@
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-pill);
+  border: var(--border);
+  background: radial-gradient(circle at 32% 28%, #f8e6b8, #e3b96b);
+  display: grid;
+  place-items: center;
+  font-size: 28px;
+  box-shadow: var(--shadow-sm);
+  flex: none;
+}
+
+.input {
+  width: 100%;
+  border: var(--border);
+  border-radius: var(--r-btn);
+  background: rgba(255, 255, 255, 0.5);
+  padding: 12px 14px;
+  outline: none;
+}
+.input:focus {
+  border-color: var(--cta);
+  background: #fff;
+}
+
+.gradeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: var(--sp-sm);
+}
+
+/* 头像按钮：点击区域 = 圆形头像，无边框无背景，像可点的圆 */
+.avatarBtn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  border-radius: 50%;
+  line-height: 0;
+  cursor: pointer;
+}
+.avatarBtn:active {
+  transform: scale(0.96);
+}
+
+/* 表情选择行 */
+.emojiRow {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-sm);
+  margin-top: 4px;
+}
+.emojiBtn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(59, 46, 34, 0.15);
+  background: var(--paper-deep);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: transform 120ms var(--ease), border-color 120ms var(--ease);
+}
+.emojiBtn.on {
+  border-color: var(--cta);
+  box-shadow: 0 0 0 2px rgba(214, 132, 67, 0.25);
+  transform: scale(1.05);
+}
+
+/* 高级设置折叠触发器：像链接一样的按钮 */
+.linkBtn {
+  background: none;
+  border: none;
+  color: var(--accent, #6a8caf);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  font: inherit;
+  font-size: 13px;
+  margin-top: 2px;
+}
+.linkBtn:hover {
+  text-decoration: underline;
+}

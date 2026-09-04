@@ -1,0 +1,10 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+# 把同源 /api/* 交给 Edge Function 反代到江苏智慧教育平台，
+# 复刻 vite.config.ts 的 server.proxy（/api -> /baseApi），
+# 使纯静态托管下前端也能用 TCPlayer 直接播放视频。
+[[edge_functions]]
+  path = "/api/*"
+  function = "api-proxy"

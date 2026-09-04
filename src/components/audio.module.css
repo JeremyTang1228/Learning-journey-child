@@ -1,0 +1,119 @@
+.wrap {
+  background: rgba(79, 168, 201, 0.08);
+  border: 2px solid rgba(79, 168, 201, 0.3);
+  border-radius: 16px;
+  padding: 12px;
+}
+
+.note {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  padding: 6px 2px;
+  line-height: 1.6;
+}
+
+.recBtn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: #fffaf0;
+  border: 2px solid var(--ink);
+  border-radius: 14px;
+  padding: 12px;
+  font-family: var(--font-title);
+  font-size: 15px;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+.recBtn:active {
+  transform: translateY(3px);
+  box-shadow: none;
+}
+.recBtn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--town);
+  display: inline-block;
+}
+
+.live {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fffaf0;
+  border: 2px solid rgba(216, 88, 63, 0.4);
+  border-radius: 14px;
+  padding: 12px;
+}
+.recDotLive {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--red);
+  animation: pulse 1s infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+.timer {
+  flex: 1;
+  font-weight: 700;
+  font-size: 14px;
+}
+.stopBtn {
+  background: var(--red);
+  color: #fff;
+  border: 2px solid var(--ink);
+  border-radius: 12px;
+  padding: 8px 12px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.audio {
+  width: 100%;
+  height: 40px;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fffaf0;
+  border: 2px solid rgba(59, 46, 34, 0.15);
+  border-radius: 12px;
+  padding: 8px 10px;
+}
+.playBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid var(--town);
+  background: #fff;
+  color: var(--town);
+  font-size: 13px;
+  cursor: pointer;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.playBtn:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
