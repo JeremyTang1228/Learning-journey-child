@@ -1,0 +1,14 @@
+{
+  "envId": "YOUR_ENV_ID",
+  "framework": {
+    "plugins": {
+      "web": {
+        "use": "@cloudbase/framework-plugin-website",
+        "inputs": {
+          "buildCommand": "npm run build",
+          "outputPath": "dist"
+        }
+      }
+    }
+  }
+}
