@@ -3,12 +3,13 @@
 // 平台视频详情页地址示例：
 //   https://basic.jiangsu.smartedu.cn/cloudCourse/{sexk|seyk}/detail.php?resource_id=NNN
 //
-// 当前生效方案：前端经同源 /api 反代拿到播放凭证，用腾讯云 TCPlayer 在 App 内直接播放。
+// 当前生效方案：前端经 /api 反代拿到播放凭证，用腾讯云 TCPlayer 在 App 内直接播放。
 //   - 开发/预览：vite.config.ts 的 server.proxy 将 /api 转发到 https://mskzkt.jse.edu.cn，
 //     并将路径由 /api 重写为 /baseApi（changeOrigin: true）。
-//   - 生产 (Netlify)：netlify/edge-functions/api-proxy.ts 把 /api 透明转发到腾讯云开发
-//     (CloudBase) 代理函数（cloudbase/proxy/index.js），由后者（大陆 IP）代请求江苏平台，
-//     绕开其按来源 IP 封杀云厂商出口的 WAF。
+//   - 生产 (CloudBase 整站)：前端静态托管在 *.tcloudbaseapp.com，视频代理由 CloudBase
+//     HTTP 网关（独立域名 *.ap-shanghai.app.tcloudbase.com）上的 video-proxy 云函数承接。
+//     该函数为大陆 IP，可绕开江苏平台按来源 IP 封杀云厂商出口（Netlify/Vercel 等）的 WAF。
+//     前端依当前 hostname 自动切换 API 基址（见 resolveApiBase）。
 //
 // 凭证获取流程（前端 fetchPlayInfo 调用）：
 //   1. POST /api/{module}/resource/detail/  body: resource_id=NNN -> file_id
@@ -61,16 +62,43 @@ function detailPath(module: VideoModule): string {
     : 'seyk/resource/detail/';
 }
 
+// 生产环境视频代理网关完整地址（CloudBase HTTP 网关，大陆 IP）。
+// 前端在 *.tcloudbaseapp.com，网关在 *.ap-shanghai.app.tcloudbase.com，二者跨域，
+// video-proxy 云函数已返回 CORS: * 允许跨域调用。
+const PROD_API_BASE =
+  'https://jeremy-app-d1ghili220f92b255-1313498684.ap-shanghai.app.tcloudbase.com/api';
+
 /**
- * 经 vite 反代获取播放凭证。返回 file_id + app_id + psign。
+ * 解析 API 基址：
+ *  - 构建期注入 VITE_API_BASE 时优先使用（便于切换/本地联调）；
+ *  - 生产静态托管域（*.tcloudbaseapp.com）走独立网关域名；
+ *  - 开发/预览走 vite server.proxy 同源 /api。
+ */
+function resolveApiBase(): string {
+  const injected = (import.meta.env as Record<string, unknown>).VITE_API_BASE as
+    | string
+    | undefined;
+  if (injected && injected.trim()) return injected.trim();
+  if (
+    typeof location !== 'undefined' &&
+    location.hostname.endsWith('tcloudbaseapp.com')
+  ) {
+    return PROD_API_BASE;
+  }
+  return '/api';
+}
+
+/**
+ * 经 /api 反代获取播放凭证。返回 file_id + app_id + psign。
  * 网络不通或平台异常时抛出可读错误。
  */
 export async function fetchPlayInfo(
   module: VideoModule,
   resourceId: string,
 ): Promise<PlayInfo> {
+  const base = resolveApiBase();
   const post = async (path: string, body: string) => {
-    const resp = await fetch(`/api/${path}`, {
+    const resp = await fetch(`${base}/${path}`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body,
