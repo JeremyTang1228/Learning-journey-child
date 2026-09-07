@@ -6,15 +6,17 @@
 // 当前生效方案：前端经同源 /api 反代拿到播放凭证，用腾讯云 TCPlayer 在 App 内直接播放。
 //   - 开发/预览：vite.config.ts 的 server.proxy 将 /api 转发到 https://mskzkt.jse.edu.cn，
 //     并将路径由 /api 重写为 /baseApi（changeOrigin: true）。
-//   - 生产 (Netlify)：netlify/edge-functions/api-proxy.ts 完全复刻上述映射，纯静态托管也能用。
+//   - 生产 (Netlify)：netlify/edge-functions/api-proxy.ts 把 /api 透明转发到腾讯云开发
+//     (CloudBase) 代理函数（cloudbase/proxy/index.js），由后者（大陆 IP）代请求江苏平台，
+//     绕开其按来源 IP 封杀云厂商出口的 WAF。
 //
 // 凭证获取流程（前端 fetchPlayInfo 调用）：
 //   1. POST /api/{module}/resource/detail/  body: resource_id=NNN -> file_id
 //   2. POST /api/base/vod/                   body: file_id=NNN    -> app_id + psign
 //   3. TCPlayer('容器ID', { fileID, appID, psign })
 //
-// 说明：平台接口无 CORS 头、且 mp4 直链防盗链 403，故必须走 /api 反代（dev 用 vite proxy，
-// 生产用 Netlify Edge Function）。早期 iframe 内嵌 detail.php 的临时方案已弃用。
+// 说明：平台接口无 CORS 头、且 mp4 直链防盗链 403，故必须走 /api 反代。早期 iframe 内嵌
+// detail.php 的临时方案已弃用。
 
 export type VideoModule = 'sexk' | 'seyk';
 

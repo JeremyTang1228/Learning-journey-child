@@ -19,7 +19,8 @@ body {
 }
 
 #root {
-  max-width: var(--max-w);
+  width: var(--app-w);
+  max-width: 100%;
   margin: 0 auto;
   min-height: 100dvh;
   background: var(--paper);
@@ -346,7 +347,7 @@ ol {
 
 .sheet {
   width: 100%;
-  max-width: var(--max-w);
+  max-width: var(--app-w);
   max-height: 88dvh;
   overflow-y: auto;
   background: var(--paper);
@@ -410,10 +411,10 @@ ol {
 .bottomnav {
   position: fixed;
   bottom: 0;
-  left: 0;
-  right: 0;
-  max-width: var(--max-w);
-  margin: 0 auto;
+  left: 50%;
+  transform: translateX(-50%);
+  width: var(--app-w);
+  max-width: 100%;
   height: calc(var(--nav-h) + var(--safe-b));
   padding-bottom: var(--safe-b);
   display: grid;

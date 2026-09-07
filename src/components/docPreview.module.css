@@ -115,7 +115,7 @@
 .page {
   position: relative;
   width: 100%;
-  max-width: 840px;
+  max-width: 720px;
   background: #fff;
   border-radius: 4px;
   overflow: hidden;
@@ -127,6 +127,8 @@
   width: 100%;
   height: auto;
   display: block;
+  object-fit: contain;
+  image-rendering: auto;
   transition: opacity 0.2s ease;
 }
 .pageSkeleton {

@@ -2,9 +2,10 @@
   command = "npm run build"
   publish = "dist"
 
-# 把同源 /api/* 交给 Edge Function 反代到江苏智慧教育平台，
-# 复刻 vite.config.ts 的 server.proxy（/api -> /baseApi），
-# 使纯静态托管下前端也能用 TCPlayer 直接播放视频。
+# 把同源 /api/* 交给 Edge Function，但它只做「透明转发」到腾讯云开发(CloudBase)
+# 代理函数（见 cloudbase/proxy/index.js）。因为江苏平台 WAF 按来源 IP 封杀了
+# Netlify/Vercel 出口，必须绕到大陆 IP 的 CloudBase 才能拿到播放凭证。
+# Edge Function 的真实目标在 netlify/edge-functions/api-proxy.ts 的 TARGET 常量里配置。
 [[edge_functions]]
   path = "/api/*"
   function = "api-proxy"
